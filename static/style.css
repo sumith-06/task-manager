@@ -1,0 +1,37 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #eceaea;
+}
+.container{
+  background-color: white ;
+  padding: 20px;
+  width: 400px;
+  margin: 100px auto;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rbga(0,0,0,0.1);;
+}
+h1{
+  text-align: center;
+}
+.task-input{
+  display:flex;
+  gap:10px;
+}
+input{
+  padding: 8px;
+  flex: 1;
+}
+button{
+  padding:10px;
+  cursor:pointer;
+}
+#taskList{
+  padding :0%;
+}
+li{
+  padding:10px;
+  margin-top:10px;
+  background: #ebe6e6;
+  list-style:none;
+  border-radius: 5px;
+}

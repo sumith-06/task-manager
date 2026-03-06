@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Task Manager</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Task Manager</title>
 </head>
 <body>
-
-<h1>Task Manager</h1>
-
-<input id="taskInput" placeholder="Enter task">
-<button onclick="addTask()">Add Task</button>
-
-<ul id="taskList"></ul>
-
-<script src="/static/script.js"></script>
-
+  <div class="container">
+    <h1>Task Manager</h1>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter new task">
+      <button onclick="addTask()">Add Task</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+  <script src="/static/script.js"></script>
 </body>
 </html>
