@@ -36,10 +36,6 @@ def add_task():
 
     return jsonify({"message": "Task added"})
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
 @app.route("/api/tasks/<int:task_id>", methods=["DELETE"])
 def delete_task(task_id):
 
@@ -52,3 +48,7 @@ def delete_task(task_id):
     conn.close()
 
     return jsonify({"message": "Task deleted"})
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
