@@ -20,7 +20,7 @@ const list = document.getElementById("taskList")
 list.innerHTML=""
 tasks.forEach(task => {
 const li=document.createElement("li")
-li.innerText=task
+li.innerText = task.task
 list.appendChild(li)
 })
 }
