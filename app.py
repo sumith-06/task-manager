@@ -39,3 +39,16 @@ def add_task():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/api/tasks/<int:task_id>", methods=["DELETE"])
+def delete_task(task_id):
+
+    conn = get_db_connection()
+
+    conn.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
+
+    conn.commit()
+
+    conn.close()
+
+    return jsonify({"message": "Task deleted"})
