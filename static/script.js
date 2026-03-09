@@ -16,42 +16,58 @@ input.value=""
 
 
 async function loadTasks(){
+
 const response = await fetch("/api/tasks")
 const tasks = await response.json()
+
 const list = document.getElementById("taskList")
-list.innerHTML=""
+
+list.innerHTML = ""
+
 tasks.forEach(task => {
 
 const li = document.createElement("li")
 
-const taskText = document.createElement("span")
+// checkbox
+const checkbox = document.createElement("input")
+checkbox.type = "checkbox"
+checkbox.checked = task.completed
 
-taskText.innerText = task.task
+checkbox.onclick = async () => {
 
+await fetch(`/api/tasks/${task.id}/toggle`,{
+method:"PUT"
+})
 
+loadTasks()
+
+}
+
+// task text
+const span = document.createElement("span")
+span.innerText = task.task
+
+if(task.completed){
+span.style.textDecoration = "line-through"
+}
+
+// edit button
 const editBtn = document.createElement("button")
-
 editBtn.innerText = "Edit"
 
-editBtn.onclick = () => editTask(task)
-
-
+// delete button
 const deleteBtn = document.createElement("button")
-
 deleteBtn.innerText = "Delete"
 
-deleteBtn.onclick = () => deleteTask(task.id)
-
-
-li.appendChild(taskText)
-
+li.appendChild(checkbox)
+li.appendChild(span)
 li.appendChild(editBtn)
-
 li.appendChild(deleteBtn)
 
 list.appendChild(li)
 
 })
+
 }
 window.onload = loadTasks
 

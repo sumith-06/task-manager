@@ -31,17 +31,17 @@ button{
 li{
 display:flex;
 align-items:center;
+background:#eee;
 padding:10px;
 margin:6px 0;
-background:#e6e6e6;
-border-radius:6px;
+border-radius:5px;
 }
 
 li span{
 flex:1;
+margin-left:10px;
 }
 
 li button{
 margin-left:8px;
-padding:4px 10px;
 }
