@@ -51,3 +51,21 @@ def delete_task(task_id):
     conn.close()
 
     return jsonify({"message": "Task deleted"})
+
+@tasks_bp.route("/api/tasks/<int:task_id>", methods=["PUT"])
+def update_task(task_id):
+
+    data = request.json
+    new_task = data["task"]
+
+    conn = get_db_connection()
+
+    conn.execute(
+        "UPDATE tasks SET task=? WHERE id=?",
+        (new_task, task_id)
+    )
+
+    conn.commit()
+    conn.close()
+
+    return jsonify({"message":"Task updated"})
