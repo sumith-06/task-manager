@@ -69,3 +69,25 @@ def update_task(task_id):
     conn.close()
 
     return jsonify({"message":"Task updated"})
+
+@tasks_bp.route("/api/tasks/<int:task_id>/toggle", methods=["PUT"])
+def toggle_task(task_id):
+
+    conn = get_db_connection()
+
+    task = conn.execute(
+        "SELECT completed FROM tasks WHERE id = ?",
+        (task_id,)
+    ).fetchone()
+
+    new_status = 0 if task["completed"] else 1
+
+    conn.execute(
+        "UPDATE tasks SET completed = ? WHERE id = ?",
+        (new_status, task_id)
+    )
+
+    conn.commit()
+    conn.close()
+
+    return jsonify({"message": "Task status updated"})
