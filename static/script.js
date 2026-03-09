@@ -22,7 +22,14 @@ tasks.forEach(task => {
 
 const li = document.createElement("li")
 
-li.innerText = task.task
+const taskText = document.createElement("span")
+
+taskText.innerText = task.task
+
+
+const editBtn = document.createElement("button")
+
+editBtn.innerText = "Edit"
 
 
 const deleteBtn = document.createElement("button")
@@ -31,6 +38,10 @@ deleteBtn.innerText = "Delete"
 
 deleteBtn.onclick = () => deleteTask(task.id)
 
+
+li.appendChild(taskText)
+
+li.appendChild(editBtn)
 
 li.appendChild(deleteBtn)
 
